@@ -1,0 +1,24 @@
+Minikube – Create Nginx Deployment
+
+minikube start
+kubectl create deployment nginx --image=nginx
+kubectl expose deployment nginx --type=NodePort --port=80
+kubectl get pods
+kubectl get services
+
+----------------
+Minikube Cluster – Deployment – Scaling
+
+minikube start
+kubectl create deployment nginx --image=nginx
+kubectl scale deployment nginx --replicas=5
+kubectl get pods
+kubectl expose deployment nginx --type=NodePort --port=80
+minikube service nginx
+------------------
+Maven web project deployed using Docker (AWS EC2)
+
+sudo apt update
+sudo apt-get install docker.io
+sudo apt install git
+sudo apt install nano
