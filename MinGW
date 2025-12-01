@@ -1,0 +1,112 @@
+Illustrate the monitoring of a project through Nagios
+
+docker pull jasonrivers/nagios:latest
+docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest
+localhost:8888
+Nagiosid : nagiosadmin
+Pwd :nagios
+
+nwe powershell 
+docker ps
+docker stop nagiosdemo
+docker rm nagiosdemo
+docker images
+docker rmi jasonrivers/nagios
+
+
+Write the Docker file and create the image and  access the image in localhost
+
+mkdir mywebapp
+cd mywebapp
+
+echo "<h1>Hello from Docker!</h1>" > index.html
+nano Dockerfile
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+docker build -t mywebimage .
+docker run -d -p 8080:80 mywebimage
+docker ps
+
+
+Create a Docker Compose setup with a Node.js app and MongoDB
+
+mkdir node-mongo
+cd node-mongo
+
+app.js
+
+const express = require("express");
+const mongoose = require("mongoose");
+
+const app = express();
+
+mongoose.connect("mongodb://mongo:27017/mydb")
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.log(err));
+
+app.get("/", (req, res) => {
+  res.send("Node.js + MongoDB running using Docker Compose!");
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));
+
+package.json
+
+{
+  "name": "node-mongo",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.4"
+  }
+}
+
+Dockerfile
+
+FROM node:18
+
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+
+CMD ["node", "app.js"]
+
+docker-compose.yml
+
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+
+docker-compose up --build
+
+
+Illustrate the scaling of a container named mysql through Kubernetes
+
+minikube start
+kubectl create deployment mysql --image=mysql:5.7
+kubectl set env deployment/mysql MYSQL_ROOT_PASSWORD=admin123
+kubectl expose deployment mysql --port=3306 --type=NodePort
+kubectl get pods
+kubectl get deployments
+kubectl get services
+kubectl scale deployment mysql --replicas=5
+kubectl get pods
+
