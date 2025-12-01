@@ -1,3 +1,42 @@
+Functional Requirements (What the system does)
+User Registration & Login
+Users create accounts, log in, and manage their profile.
+Application Form Submission
+Users fill in passport application details and upload documents.
+Document Upload & Verification
+Applicants upload ID/address proofs; officers verify them.
+Appointment Booking
+Users book/reschedule/cancel appointments for biometrics.
+Online Fee Payment
+System supports online payment and generates receipts.
+Application Status Tracking
+Users can track each stage: submitted → verified → printed → dispatched.
+Notifications
+Email/SMS alerts for submission, appointment, approval, or rejection.
+Admin Module
+Officials verify applications, update status, and manage appointments.
+Passport Printing & Dispatch Update
+System updates printing and courier tracking information.
+
+Non‑Functional Requirements (How the system behaves)
+Security
+Data encryption, secure login, access control, protection of personal data.
+Performance
+Fast page loading, quick form submission, efficient search.
+Reliability & Availability
+System should run without interruptions (high uptime).
+Scalability
+Must handle large number of users during peak times.
+Usability
+Simple, user‑friendly interface; easy navigation.
+Maintainability
+Easy to update, debug, and add new features.
+Backup & Recovery
+Data backups maintained; system can recover after failure.
+Compatibility
+Works across devices—mobile, desktop, and browsers.
+
+
 Illustrate the monitoring of a project through Nagios
 
 docker pull jasonrivers/nagios:latest
