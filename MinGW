@@ -45,7 +45,7 @@ localhost:8888
 Nagiosid : nagiosadmin
 Pwd :nagios
 
-nwe powershell 
+new powershell 
 docker ps
 docker stop nagiosdemo
 docker rm nagiosdemo
